@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#fff5f8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Kawaii Finance">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icons/kf.svg">
+
+    <title>Kawaii Finance — Your Little Money World</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🌸</div>
+            <div>
+                <h2>Kawaii<span>Finance</span></h2>
+                <p>Your little money world</p>
+            </div>
+        </div>
+
+        <div class="sidebar-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                <span>🏠</span> Dashboard
+            </a>
+
+            <a href="#transactions" class="nav-item" data-page="transactions">
+                <span>💸</span> Transactions
+            </a>
+
+            <a href="#analytics" class="nav-item" data-page="analytics">
+                <span>📊</span> Analytics
+            </a>
+        </nav>
+
+        <div class="sidebar-label tools-label">PREFERENCES</div>
+
+        <nav class="navigation">
+            <a href="#settings" class="nav-item" data-page="settings">
+                <span>⚙️</span> Settings
+            </a>
+        </nav>
+
+        <div class="mascot-card">
+            <div class="mascot-sparkle">✦ ✧ ✦</div>
+            <div class="mascot">🎀</div>
+            <h3>You've got this!</h3>
+            <p>Small steps today, a brighter money journey tomorrow. 💗</p>
+            <div class="mascot-footer">Made with ♡ for you</div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <span>🌷</span>
+            <div>
+                <strong>Personal Space</strong>
+                <small>Just you & your money</small>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                ☰
+            </button>
+
+            <div class="breadcrumb">
+                <span>My Space</span>
+                <span class="breadcrumb-arrow">/</span>
+                <strong id="breadcrumbPage">Dashboard</strong>
+            </div>
+
+            <div class="topbar-right">
+                <div class="date-display">
+                    <span>📅</span>
+                    <span id="currentDate">Today</span>
+                </div>
+
+                <div class="avatar">🌸</div>
+            </div>
+
+        </header>
+
+
+        <div class="dashboard">
+
+            <!-- =================================
+                 DASHBOARD
+            ================================== -->
+
+            <section class="page-view" id="dashboardPage">
+
+                <section class="welcome-section">
+
+                    <div class="welcome-content">
+
+                        <div class="welcome-copy">
+                            <div class="welcome-tag">
+                                ✦ YOUR FINANCIAL HAPPY PLACE ✦
+                            </div>
+
+                            <h1>Hello, Abhay! <span class="wave">👋</span></h1>
+
+                            <p>
+                                Ready to make your money bloom?
+                                Let's see how you're doing today. 🌷
+                            </p>
+                        </div>
+
+                        <img
+                            src="assets/anime-girl.png"
+                            alt="Cute anime girl mascot"
+                            class="welcome-character"
+                            onerror="this.style.display='none'"
+                        >
+
+                    </div>
+
+                    <button class="primary-btn" id="addExpenseBtn">
+                        <span>＋</span> Add Transaction
+                    </button>
+
+                </section>
+
+
+                <!-- SUMMARY CARDS -->
+
+                <section class="summary-grid">
+
+                    <article class="summary-card">
+                        <div class="card-top">
+                            <div class="card-icon pink-icon">💰</div>
+                            <span class="card-menu">•••</span>
+                        </div>
+
+                        <p class="card-label">Total Balance</p>
+                        <h2 id="totalBalance">₹0.00</h2>
+
+                        <div class="card-bottom">
+                            <span class="trend positive">↗ Your money</span>
+                            <span class="card-caption">All time</span>
+                        </div>
+                    </article>
+
+
+                    <article class="summary-card">
+                        <div class="card-top">
+                            <div class="card-icon purple-icon">🌷</div>
+                            <span class="card-menu">•••</span>
+                        </div>
+
+                        <p class="card-label">Total Income</p>
+                        <h2 id="totalIncome">₹0.00</h2>
+
+                        <div class="card-bottom">
+                            <span class="trend positive">↗ Money in</span>
+                            <span class="card-caption">All time</span>
+                        </div>
+                    </article>
+
+
+                    <article class="summary-card">
+                        <div class="card-top">
+                            <div class="card-icon peach-icon">🛍️</div>
+                            <span class="card-menu">•••</span>
+                        </div>
+
+                        <p class="card-label">Total Expenses</p>
+                        <h2 id="totalExpense">₹0.00</h2>
+
+                        <div class="card-bottom">
+                            <span class="trend negative">↘ Money out</span>
+                            <span class="card-caption">All time</span>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- SPENDING CHART -->
+
+                <section class="panel spending-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Spending Overview 🌸</h3>
+                            <p>Your expense history</p>
+                        </div>
+
+                        <select id="chartPeriod" class="period-select">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+
+                    <div class="chart-legend">
+                        <span>
+                            <i class="legend-dot pink-dot"></i>
+                            Expenses
+                        </span>
+                    </div>
+
+                    <div class="chart" id="spendingChart">
+                        <div class="chart-bars" id="chartBars"></div>
+                    </div>
+
+                </section>
+
+
+                <!-- RECENT TRANSACTIONS -->
+
+                <section class="panel transactions-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Recent Transactions 🧸</h3>
+                            <p>Your latest money activities</p>
+                        </div>
+
+                        <button class="text-btn" id="viewAllTransactions">
+                            View All →
+                        </button>
+                    </div>
+
+                    <div class="transaction-table-wrapper">
+                        <table class="transaction-table">
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION</th>
+                                    <th>CATEGORY</th>
+                                    <th>DATE</th>
+                                    <th>AMOUNT</th>
+                                    <th>TYPE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="transactionList"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="empty-state" id="recentEmpty" hidden>
+                        <div>🌸</div>
+                        <h3>Your money story starts here!</h3>
+                        <p>Add your first transaction to see it here.</p>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================
+                 ALL TRANSACTIONS
+            ================================== -->
+
+            <section class="page-view" id="transactionsPage" hidden>
+
+                <div class="page-heading">
+                    <div>
+                        <span class="welcome-tag">✦ YOUR MONEY JOURNAL ✦</span>
+                        <h1>All Transactions 💸</h1>
+                        <p>Every little money movement, all in one place.</p>
+                    </div>
+
+                    <button class="primary-btn" id="transactionsAddExpense">
+                        ＋ Add Transaction
+                    </button>
+                </div>
+
+
+                <div class="transaction-filters">
+
+                    <div class="search-box">
+                        <span>🔎</span>
+                        <input
+                            type="search"
+                            id="transactionSearch"
+                            placeholder="Search transactions..."
+                        >
+                    </div>
+
+                    <select id="transactionTypeFilter">
+                        <option value="all">All types</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expenses</option>
+                    </select>
+
+                    <select id="transactionCategoryFilter">
+                        <option value="all">All categories</option>
+                    </select>
+
+                    <select id="transactionSort">
+                        <option value="newest">Newest first</option>
+                        <option value="oldest">Oldest first</option>
+                        <option value="highest">Highest amount</option>
+                        <option value="lowest">Lowest amount</option>
+                    </select>
+
+                </div>
+
+
+                <div class="transaction-results-label">
+                    <span id="transactionResultsCount">0 transactions</span>
+                    <span>🌷 Your complete history</span>
+                </div>
+
+
+                <section class="panel all-transactions-panel">
+
+                    <div class="transaction-table-wrapper">
+                        <table class="transaction-table">
+
+                            <thead>
+                                <tr>
+                                    <th>TRANSACTION</th>
+                                    <th>CATEGORY</th>
+                                    <th>DATE</th>
+                                    <th>AMOUNT</th>
+                                    <th>TYPE</th>
+                                    <th>ACTIONS</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="allTransactionsList"></tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="empty-state" id="transactionsEmpty" hidden>
+                        <div>🧸</div>
+                        <h3>No transactions found</h3>
+                        <p>Try changing your search or filters.</p>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================
+                 ANALYTICS
+            ================================== -->
+
+            <section class="page-view" id="analyticsPage" hidden>
+
+                <div class="page-heading">
+                    <div>
+                        <span class="welcome-tag">✦ YOUR MONEY, UNDERSTOOD ✦</span>
+                        <h1>Financial Analytics 📊</h1>
+                        <p>A clearer picture of where your money comes from and where it goes.</p>
+                    </div>
+                    <div class="heading-decoration">🌸</div>
+                </div>
+
+
+                <!-- DATE FILTER -->
+
+                <section class="panel analytics-filter-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Explore your finances</h3>
+                            <p>Choose the period you want to analyse.</p>
+                        </div>
+                        <span class="large-icon">🗓️</span>
+                    </div>
+
+                    <div class="analytics-filters">
+
+                        <select id="analyticsRange">
+                            <option value="week">This week</option>
+                            <option value="month" selected>This month</option>
+                            <option value="lastMonth">Last month</option>
+                            <option value="year">This year</option>
+                            <option value="all">All time</option>
+                            <option value="custom">Custom range</option>
+                        </select>
+
+                        <div class="custom-dates" id="analyticsCustomDates" hidden>
+                            <label>
+                                From
+                                <input type="date" id="analyticsStartDate">
+                            </label>
+
+                            <label>
+                                To
+                                <input type="date" id="analyticsEndDate">
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <p class="date-caption" id="analyticsDateCaption"></p>
+
+                </section>
+
+
+                <!-- ANALYTICS SUMMARY -->
+
+                <section class="analytics-summary-grid">
+
+                    <article class="analytics-stat-card">
+                        <div class="analytics-stat-icon purple-icon">🌷</div>
+                        <p>Total income</p>
+                        <h2 id="analyticsIncome">₹0.00</h2>
+                        <small>Money received</small>
+                    </article>
+
+                    <article class="analytics-stat-card">
+                        <div class="analytics-stat-icon peach-icon">🛍️</div>
+                        <p>Total expenses</p>
+                        <h2 id="analyticsExpenses">₹0.00</h2>
+                        <small>Money spent</small>
+                    </article>
+
+                    <article class="analytics-stat-card">
+                        <div class="analytics-stat-icon blue-icon">💰</div>
+                        <p>Net cash flow</p>
+                        <h2 id="analyticsNet">₹0.00</h2>
+                        <small>Income minus expenses</small>
+                    </article>
+
+                    <article class="analytics-stat-card">
+                        <div class="analytics-stat-icon pink-icon">💗</div>
+                        <p>Net savings rate</p>
+                        <h2 id="analyticsSavingsRate">N/A</h2>
+                        <small>Net cash flow ÷ income</small>
+                    </article>
+
+                </section>
+
+
+                <!-- INCOME VS EXPENSES -->
+
+                <section class="panel analytics-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Income vs. Expenses 🌸</h3>
+                            <p>Compare the money coming in and going out.</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-legend">
+                        <span><i class="legend-dot income-dot"></i> Income</span>
+                        <span><i class="legend-dot expense-dot"></i> Expenses</span>
+                    </div>
+
+                    <div class="analytics-trend-chart" id="analyticsTrendChart"></div>
+
+                </section>
+
+
+                <!-- CATEGORY BREAKDOWN -->
+
+                <section class="analytics-lower-grid">
+
+                    <article class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Spending by Category 🎀</h3>
+                                <p>See which categories take the biggest share.</p>
+                            </div>
+                        </div>
+
+                        <div id="analyticsCategoryList" class="analytics-category-list"></div>
+                    </article>
+
+
+                    <article class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Top Spending Categories 🧸</h3>
+                                <p>Your highest expense categories.</p>
+                            </div>
+                        </div>
+
+                        <div id="analyticsTopCategories" class="analytics-top-categories"></div>
+                    </article>
+
+                </section>
+
+
+                <!-- PERIOD SUMMARY -->
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Period Summary ✨</h3>
+                            <p>A quick breakdown of your selected period.</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-details-grid">
+
+                        <div>
+                            <span>Transactions</span>
+                            <strong id="analyticsTransactionCount">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Average expense</span>
+                            <strong id="analyticsAverageExpense">₹0.00</strong>
+                        </div>
+
+                        <div>
+                            <span>Largest expense</span>
+                            <strong id="analyticsLargestExpense">₹0.00</strong>
+                        </div>
+
+                        <div>
+                            <span>Top spending category</span>
+                            <strong id="analyticsTopCategory">—</strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================
+                 SETTINGS
+            ================================== -->
+
+            <section class="page-view" id="settingsPage" hidden>
+
+                <div class="page-heading">
+                    <div>
+                        <span class="welcome-tag">✦ YOUR PERSONAL SPACE ✦</span>
+                        <h1>Settings ⚙️</h1>
+                        <p>Manage your Kawaii Finance data and backups.</p>
+                    </div>
+                    <div class="heading-decoration">🎀</div>
+                </div>
+
+
+                <!-- DATA OVERVIEW -->
+
+                <section class="settings-overview">
+
+                    <article class="settings-stat">
+                        <span>💸</span>
+                        <div>
+                            <small>Saved transactions</small>
+                            <strong id="settingsTransactionCount">0</strong>
+                        </div>
+                    </article>
+
+                    <article class="settings-stat">
+                        <span>💰</span>
+                        <div>
+                            <small>Total recorded value</small>
+                            <strong id="settingsRecordedValue">₹0.00</strong>
+                        </div>
+                    </article>
+
+                </section>
+
+
+                <!-- EXPORT -->
+
+                <section class="panel settings-panel">
+
+                    <div class="settings-panel-heading">
+                        <div class="settings-icon purple-icon">📦</div>
+                        <div>
+                            <h3>Export your data</h3>
+                            <p>Keep a backup of your financial records.</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+
+                        <button class="secondary-btn" id="exportJsonBtn">
+                            <span>📄</span>
+                            Download JSON Backup
+                        </button>
+
+                        <button class="secondary-btn" id="exportCsvBtn">
+                            <span>📊</span>
+                            Export CSV Spreadsheet
+                        </button>
+
+                    </div>
+
+                    <p class="settings-note">
+                        JSON backups can be imported back into Kawaii Finance.
+                        CSV files are suitable for spreadsheet applications.
+                    </p>
+
+                </section>
+
+
+                <!-- IMPORT -->
+
+                <section class="panel settings-panel">
+
+                    <div class="settings-panel-heading">
+                        <div class="settings-icon blue-icon">📥</div>
+                        <div>
+                            <h3>Import your data</h3>
+                            <p>Restore transactions from a JSON backup.</p>
+                        </div>
+                    </div>
+
+                    <label class="file-upload-area" for="importFile">
+                        <span>📁</span>
+                        <strong>Choose a backup file</strong>
+                        <small>JSON backup files only</small>
+                        <input
+                            type="file"
+                            id="importFile"
+                            accept=".json,application/json"
+                        >
+                    </label>
+
+                    <p class="settings-note">
+                        Importing a backup replaces the transactions currently
+                        stored in this browser. Export your current data first
+                        if you want to keep it.
+                    </p>
+
+                </section>
+
+
+                <!-- RESET -->
+
+                <section class="panel settings-panel danger-panel">
+
+                    <div class="settings-panel-heading">
+                        <div class="settings-icon danger-icon">🗑️</div>
+                        <div>
+                            <h3>Reset all data</h3>
+                            <p>Start your financial journey from zero.</p>
+                        </div>
+                    </div>
+
+                    <p class="danger-description">
+                        This permanently deletes every transaction saved in
+                        this browser. This action cannot be undone.
+                        Export a backup before proceeding if needed.
+                    </p>
+
+                    <button class="danger-btn" id="resetDataBtn">
+                        Reset All Transactions
+                    </button>
+
+                </section>
+
+                <p class="settings-footer">
+                    Your data is stored locally in this browser.
+                    Kawaii Finance does not send your transaction records
+                    to a server.
+                </p>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+                <p>Made with 💗 and a little bit of magic.</p>
+                <span>Kawaii Finance © <span id="currentYear"></span></span>
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =================================
+     ADD TRANSACTION MODAL
+================================== -->
+
+<div class="modal-overlay" id="expenseModal">
+
+    <div class="expense-modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-kicker">A LITTLE MONEY UPDATE 🌷</span>
+                <h2>Add a Transaction</h2>
+            </div>
+
+            <button class="modal-close" id="closeModal" type="button">×</button>
+        </div>
+
+
+        <form id="expenseForm">
+
+            <label>Transaction type</label>
+
+            <div class="transaction-type-switch">
+
+                <label class="type-option income-option">
+                    <input type="radio" name="transactionType" value="income">
+                    <span>💰 Income</span>
+                </label>
+
+                <label class="type-option expense-option">
+                    <input type="radio" name="transactionType" value="expense" checked>
+                    <span>🛍️ Expense</span>
+                </label>
+
+            </div>
+
+
+            <label for="expenseName">What did you spend on?</label>
+            <input
+                type="text"
+                id="expenseName"
+                placeholder="e.g. Coffee, Books..."
+                maxlength="80"
+                required
+            >
+
+            <label for="expenseDescription">Description</label>
+            <input
+                type="text"
+                id="expenseDescription"
+                placeholder="Optional note"
+                maxlength="120"
+            >
+
+            <label for="expenseAmount">Amount (₹)</label>
+            <input
+                type="number"
+                id="expenseAmount"
+                placeholder="Enter amount"
+                min="0.01"
+                step="0.01"
+                required
+            >
+
+            <label for="expenseCategory">Category</label>
+            <select id="expenseCategory" required></select>
+
+            <label for="expenseDate">Date</label>
+            <input type="date" id="expenseDate" required>
+
+            <button type="submit" class="submit-expense-btn" id="saveTransactionBtn">
+                Save Expense 💗
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =================================
+     EDIT TRANSACTION MODAL
+================================== -->
+
+<div class="modal-overlay" id="editTransactionModal">
+
+    <div class="expense-modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="modal-kicker">A LITTLE MONEY UPDATE 🌷</span>
+                <h2>Edit Transaction</h2>
+            </div>
+
+            <button class="modal-close" id="closeEditModal" type="button">×</button>
+        </div>
+
+
+        <form id="editTransactionForm">
+
+            <label for="editTransactionName">Transaction name</label>
+            <input type="text" id="editTransactionName" maxlength="80" required>
+
+            <label for="editTransactionDescription">Description</label>
+            <input type="text" id="editTransactionDescription" maxlength="120">
+
+            <label for="editTransactionAmount">Amount (₹)</label>
+            <input type="number" id="editTransactionAmount" min="0.01" step="0.01" required>
+
+            <label for="editTransactionType">Transaction type</label>
+            <select id="editTransactionType" required>
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+            </select>
+
+            <label for="editTransactionCategory">Category</label>
+            <select id="editTransactionCategory" required></select>
+
+            <label for="editTransactionDate">Date</label>
+            <input type="date" id="editTransactionDate" required>
+
+            <button type="submit" class="submit-expense-btn">
+                Save Changes 💗
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- HIDDEN IMPORT INPUT -->
+
+<script src="script.js"></script>
+
+<!-- PWA SERVICE WORKER REGISTRATION -->
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker
+                .register("./service-worker.js")
+                .then((registration) => {
+                    console.log(
+                        "Kawaii Finance PWA is ready!",
+                        registration.scope
+                    );
+                })
+                .catch((error) => {
+                    console.error(
+                        "Service Worker registration failed:",
+                        error
+                    );
+                });
+        });
+    }
+</script>
+
+</body>
+</html>
