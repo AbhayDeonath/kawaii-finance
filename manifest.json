@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Kawaii Finance",
+  "short_name": "Kawaii Finance",
+  "description": "Your little money world. Manage your finances beautifully.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff5f8",
+  "theme_color": "#fff5f8",
+  "icons": [
+    {
+      "src": "icons/kf.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
