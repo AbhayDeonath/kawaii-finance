@@ -2310,7 +2310,6 @@ function renderAnalyticsTrend(filtered, range) {
             `${item.income > 0 ? Math.max((item.income / maxValue) * 100, 3) : 2}%`;
 
         incomeBar.dataset.tooltip = `Income: ${formatCurrency(item.income)}`;
-        incomeBar.title = `Income: ${formatCurrency(item.income)}`;
         incomeBar.setAttribute("aria-label", `Income: ${formatCurrency(item.income)}`);
 
 
@@ -2322,7 +2321,6 @@ function renderAnalyticsTrend(filtered, range) {
             `${item.expenses > 0 ? Math.max((item.expenses / maxValue) * 100, 3) : 2}%`;
 
         expenseBar.dataset.tooltip = `Expenses: ${formatCurrency(item.expenses)}`;
-        expenseBar.title = `Expenses: ${formatCurrency(item.expenses)}`;
         expenseBar.setAttribute("aria-label", `Expenses: ${formatCurrency(item.expenses)}`);
 
 
