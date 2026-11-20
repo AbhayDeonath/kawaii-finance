@@ -2121,7 +2121,7 @@ function renderAnalyticsTrend(filtered, range) {
     const buckets = [];
 
 
-    if (totalDays <= 14) {
+    if (totalDays <= 31) {
 
         for (let i = 0; i < totalDays; i++) {
 
